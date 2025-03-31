@@ -323,6 +323,14 @@ MonoBehaviour:
   healthBar: {fileID: 29372536}
   passedTime: 0
   pauseButton: {fileID: 2040487856}
+  points:
+  - {fileID: 253976135}
+  - {fileID: 1919985518}
+  - {fileID: 122411188}
+  - {fileID: 18117898}
+  - {fileID: 1080539453}
+  enemySpeed: 3
+  enemy: {fileID: 990539965}
   canChangeColor: 1
 --- !u!4 &254505519
 Transform:

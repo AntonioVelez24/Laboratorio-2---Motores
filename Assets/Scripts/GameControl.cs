@@ -9,10 +9,14 @@ public class GameControl : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private Image healthBar;
-    [SerializeField] public float passedTime;
+    [SerializeField] private float passedTime;
     [SerializeField] private GameObject pauseButton;
+    [SerializeField] private Transform[] points;
+    [SerializeField] private int enemySpeed;
+    [SerializeField] private GameObject enemy;
 
     private SpriteRenderer mySpriteRenderer;
+    private int currentPoint = 0;
 
     private bool isPaused = false;
     public bool canChangeColor = true;
@@ -68,7 +72,8 @@ public class GameControl : MonoBehaviour
         if (player.Health <= 0)
         {
             PlayerPrefs.SetString("GameResult", "Game Over");
-            PlayerPrefs.SetString("TimeResult", "Final Time" + Mathf.FloorToInt(passedTime));
+            PlayerPrefs.SetString("TimeResult", "Final Time: " + Mathf.FloorToInt(passedTime));
+            PlayerPrefs.SetInt("SpriteResult", 1);
 
             SceneManager.LoadScene("EndScreen");
         }
@@ -84,9 +89,15 @@ public class GameControl : MonoBehaviour
             {
                 PlayerPrefs.SetString("GameResult", "You Win!");
                 PlayerPrefs.SetString("TimeResult", "Final Time" + seconds);
+                PlayerPrefs.SetInt("SpriteResult", 0);
 
                 SceneManager.LoadScene("EndScreen");
             }
         }
+        if (Vector3.Distance(enemy.transform.position, points[currentPoint].position) < 0.1f)
+        {
+            currentPoint = (currentPoint + 1) % points.Length;
+        }
+        enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, points[currentPoint].position, enemySpeed * Time.deltaTime);
     }
 }

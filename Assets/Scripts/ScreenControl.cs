@@ -6,8 +6,8 @@ public class ScreenControl : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI resultText;
     [SerializeField] private TextMeshProUGUI timeText;
-
-    public bool gameWin;
+    [SerializeField] private Sprite[] endSprites;
+    [SerializeField] private SpriteRenderer endRenderer;
 
     void Start()
     {
@@ -16,6 +16,10 @@ public class ScreenControl : MonoBehaviour
 
         string gameResult = PlayerPrefs.GetString("GameResult");
         resultText.text = gameResult;
+
+        int resultSprite = PlayerPrefs.GetInt("SpriteResult");
+        endRenderer.sprite = endSprites[resultSprite];
+
     }
     public void RestartGame()
     {
