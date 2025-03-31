@@ -9,12 +9,13 @@ public class GameControl : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private Image healthBar;
-    [SerializeField] private float passedTime;
+    [SerializeField] public float passedTime;
     [SerializeField] private GameObject pauseButton;
 
     private SpriteRenderer mySpriteRenderer;
 
     private bool isPaused = false;
+    public bool canChangeColor = true;
     
     void Awake()
     {
@@ -34,7 +35,11 @@ public class GameControl : MonoBehaviour
     }
     private void ChangeColor(Color newColor)
     {
-        mySpriteRenderer.color = newColor;
+        if (canChangeColor)
+        {
+            mySpriteRenderer.color = newColor;
+        }
+        
     }
     public void Pause()
     {
@@ -62,6 +67,9 @@ public class GameControl : MonoBehaviour
 
         if (player.Health <= 0)
         {
+            PlayerPrefs.SetString("GameResult", "Game Over");
+            PlayerPrefs.SetString("TimeResult", "Final Time" + Mathf.FloorToInt(passedTime));
+
             SceneManager.LoadScene("EndScreen");
         }
     }
@@ -71,10 +79,12 @@ public class GameControl : MonoBehaviour
         {
             passedTime += Time.deltaTime;
             int seconds = Mathf.FloorToInt(passedTime);
-            timeText.text = "Tiempo: " + seconds;
-            if (passedTime >= 30)
+            timeText.text = "Time: " + seconds;
+            if (passedTime >= 60)
             {
-                PlayerPrefs.SetString("GameResult", "You Win");
+                PlayerPrefs.SetString("GameResult", "You Win!");
+                PlayerPrefs.SetString("TimeResult", "Final Time" + seconds);
+
                 SceneManager.LoadScene("EndScreen");
             }
         }

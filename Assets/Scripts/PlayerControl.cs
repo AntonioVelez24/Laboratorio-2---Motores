@@ -84,4 +84,12 @@ public class PlayerControl : MonoBehaviour
             gameControl.UpdateHealthBar();
         }
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        gameControl.canChangeColor = false;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        gameControl.canChangeColor = true;
+    }
 }
