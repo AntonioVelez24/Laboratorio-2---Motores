@@ -16,6 +16,5 @@ public class MenuControl : MonoBehaviour
     void Update()
     {
         amongus.transform.Rotate(0,0, rotationSpeed * Time.deltaTime);
-
     }
 }

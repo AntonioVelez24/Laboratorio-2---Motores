@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
+    [SerializeField] GameControl gameControl;
     [SerializeField] private int speed;
     [SerializeField] private int health;
     [SerializeField] private int verticalForce;
@@ -9,7 +11,9 @@ public class PlayerControl : MonoBehaviour
 
     private Rigidbody2D myRigidbody2D;
     private SpriteRenderer mySpriteRenderer;
-    private SpriteRenderer obstacleSpriteRenderer;    
+    private SpriteRenderer obstacleSpriteRenderer;   
+    
+    public int Health => health;
 
     private float xDirection;
 
@@ -49,6 +53,9 @@ public class PlayerControl : MonoBehaviour
         {
             canJump = false;
         }
+        float clampedX = Mathf.Clamp(transform.localPosition.x, -8.5f, 8.5f);
+
+        transform.localPosition = new Vector2(clampedX, transform.localPosition.y);
     }
     private void FixedUpdate()
     {
@@ -65,6 +72,16 @@ public class PlayerControl : MonoBehaviour
         else
         {
             Debug.DrawRay(origin.position, Vector2.down * 1f, Color.red);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        obstacleSpriteRenderer = collision.gameObject.GetComponent<SpriteRenderer>();
+
+        if (mySpriteRenderer.color != obstacleSpriteRenderer.color)
+        {
+            health--;
+            gameControl.UpdateHealthBar();
         }
     }
 }
