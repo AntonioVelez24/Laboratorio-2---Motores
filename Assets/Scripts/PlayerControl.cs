@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] GameControl gameControl;
     [SerializeField] private int speed;
     [SerializeField] private int health;
+    [SerializeField] private int score;
     [SerializeField] private int verticalForce;
     [SerializeField] private Transform origin;
 
@@ -82,6 +84,17 @@ public class PlayerControl : MonoBehaviour
         {
             health--;
             gameControl.UpdateHealthBar();
+        }
+
+        if (collision.gameObject.CompareTag("Heart"))
+        {
+            health = Mathf.Clamp(health + 1, 0, 10);
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            score = score + 100;
+            Destroy(collision.gameObject);
         }
     }
     private void OnTriggerStay2D(Collider2D collision)

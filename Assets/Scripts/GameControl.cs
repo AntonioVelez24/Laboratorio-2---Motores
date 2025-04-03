@@ -69,6 +69,11 @@ public class GameControl : MonoBehaviour
     {
         healthBar.fillAmount = player.Health / 10f;
 
+        if(player.Health <= 4)
+        {
+            healthBar.color = Color.yellow;
+        }       
+
         if (player.Health <= 0)
         {
             PlayerPrefs.SetString("GameResult", "Game Over");
@@ -88,7 +93,7 @@ public class GameControl : MonoBehaviour
             if (passedTime >= 60)
             {
                 PlayerPrefs.SetString("GameResult", "You Win!");
-                PlayerPrefs.SetString("TimeResult", "Final Time" + seconds);
+                PlayerPrefs.SetString("TimeResult", "Final Time: " + seconds);
                 PlayerPrefs.SetInt("SpriteResult", 0);
 
                 SceneManager.LoadScene("EndScreen");

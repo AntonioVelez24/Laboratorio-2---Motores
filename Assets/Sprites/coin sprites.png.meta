@@ -1,10 +1,25 @@
 fileFormatVersion: 2
-guid: d3f51b69ecb7f76479024b0fd714a172
+guid: 9560b8d0f09f1ce4092685f62a7441a3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4630005692555058675
-    second: Among-Us-Ghosts_0
+      213: 6803290878254610607
+    second: coin sprites_0
+  - first:
+      213: -757798974594317361
+    second: coin sprites_1
+  - first:
+      213: -4959770554009954433
+    second: coin sprites_2
+  - first:
+      213: -3915330122797851312
+    second: coin sprites_3
+  - first:
+      213: 5230109300745580981
+    second: coin sprites_4
+  - first:
+      213: 1424147344844419271
+    second: coin sprites_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,7 +112,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,7 +125,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -139,13 +154,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Among-Us-Ghosts_0
+      name: coin sprites_0
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 0
-        width: 182
-        height: 221
+        width: 85
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +169,118 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d02283b7a5aeebfb0800000000000000
-      internalID: -4630005692555058675
+      spriteID: fa8750622052a6e50800000000000000
+      internalID: 6803290878254610607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin sprites_1
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 0
+        width: 68
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc3862cf8d1cb75f0800000000000000
+      internalID: -757798974594317361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin sprites_2
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 0
+        width: 52
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f775bc885fa5b2bb0800000000000000
+      internalID: -4959770554009954433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin sprites_3
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 0
+        width: 17
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05d5f346ff3f9a9c0800000000000000
+      internalID: -3915330122797851312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin sprites_4
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 0
+        width: 52
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b1386fd2b4159840800000000000000
+      internalID: 5230109300745580981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin sprites_5
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 0
+        width: 68
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c07445f67693c310800000000000000
+      internalID: 1424147344844419271
       vertices: []
       indices: 
       edges: []
@@ -173,8 +298,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Among-Us-Ghosts_0: -4630005692555058675
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

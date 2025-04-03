@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d3f51b69ecb7f76479024b0fd714a172
+guid: 1436f9ed9f695e84dbf38b42142f7468
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4630005692555058675
-    second: Among-Us-Ghosts_0
+      213: 1448707681996464028
+    second: Heart_Artwork_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,7 +97,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,7 +110,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Among-Us-Ghosts_0
+      name: Heart_Artwork_0
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 0
-        width: 182
-        height: 221
+        width: 313
+        height: 267
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d02283b7a5aeebfb0800000000000000
-      internalID: -4630005692555058675
+      spriteID: c9f57c016f7da1410800000000000000
+      internalID: 1448707681996464028
       vertices: []
       indices: 
       edges: []
@@ -173,8 +173,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Among-Us-Ghosts_0: -4630005692555058675
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
