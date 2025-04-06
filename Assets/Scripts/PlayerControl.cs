@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
@@ -16,6 +17,7 @@ public class PlayerControl : MonoBehaviour
     private SpriteRenderer obstacleSpriteRenderer;   
     
     public int Health => health;
+    public int Score => score;
 
     private float xDirection;
 
@@ -24,6 +26,9 @@ public class PlayerControl : MonoBehaviour
 
     [SerializeField] private int extraJumps;
     [SerializeField] private LayerMask raycastlayers;
+
+    public event Action OnHealthChanged;
+    public event Action OnScoreChanged;
 
     void Awake()
     {
@@ -80,21 +85,23 @@ public class PlayerControl : MonoBehaviour
     {
         obstacleSpriteRenderer = collision.gameObject.GetComponent<SpriteRenderer>();
 
-        if (mySpriteRenderer.color != obstacleSpriteRenderer.color)
+        if (mySpriteRenderer.color != obstacleSpriteRenderer.color && collision.gameObject.CompareTag("Color"))
         {
             health--;
-            gameControl.UpdateHealthBar();
+            OnHealthChanged?.Invoke();
         }
 
         if (collision.gameObject.CompareTag("Heart"))
         {
             health = Mathf.Clamp(health + 1, 0, 10);
             Destroy(collision.gameObject);
+            OnHealthChanged?.Invoke();
         }
         if (collision.gameObject.CompareTag("Coin"))
         {
             score = score + 100;
             Destroy(collision.gameObject);
+            OnScoreChanged?.Invoke();
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
