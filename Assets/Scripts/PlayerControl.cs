@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
@@ -42,8 +43,6 @@ public class PlayerControl : MonoBehaviour
     }
     void Update()
     {
-        xDirection = Input.GetAxis("Horizontal");
-
         if (xDirection < 0)
         {
             mySpriteRenderer.flipX = true;
@@ -114,6 +113,17 @@ public class PlayerControl : MonoBehaviour
         {
             myRigidbody2D.AddForce(Vector2.up * verticalForce, ForceMode2D.Impulse);
             extraJumps--;
+        }
+    }
+    public void OnMovementInput (InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.performed)
+        {
+            xDirection = callbackContext.ReadValue<float>();
+        }
+        else
+        {
+            xDirection = 0;
         }
     }
 }
