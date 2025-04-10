@@ -2,7 +2,7 @@
     "name": "Main Input",
     "maps": [
         {
-            "name": "Player",
+            "name": "Game",
             "id": "4751502c-e4d1-4a25-895c-362afb666327",
             "actions": [
                 {
@@ -20,6 +20,39 @@
                     "name": "",
                     "id": "b23858da-6f5d-4c37-8979-0bcec8fe587a",
                     "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "724bf788-369e-4d06-b433-3a89a8800b4c",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5bba8278-2731-4af4-b8a0-c5aeab14f69c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "72f42600-5fe5-4285-b3a1-da8162cec827",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

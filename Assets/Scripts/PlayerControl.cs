@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 
@@ -43,11 +44,6 @@ public class PlayerControl : MonoBehaviour
     {
         xDirection = Input.GetAxis("Horizontal");
 
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
-        {
-            myRigidbody2D.AddForce(Vector2.up * verticalForce, ForceMode2D.Impulse);
-            extraJumps--;
-        }
         if (xDirection < 0)
         {
             mySpriteRenderer.flipX = true;
@@ -111,5 +107,13 @@ public class PlayerControl : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         gameControl.canChangeColor = true;
+    }
+    public void OnJumpInput (InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.performed && canJump)
+        {
+            myRigidbody2D.AddForce(Vector2.up * verticalForce, ForceMode2D.Impulse);
+            extraJumps--;
+        }
     }
 }
