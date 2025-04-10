@@ -1,9 +1,6 @@
 using System;
 using UnityEngine;
-using UnityEngine.Animations;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -13,24 +10,29 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private int score;
     [SerializeField] private int verticalForce;
     [SerializeField] private Transform origin;
+    [SerializeField] private Color[] playerColors = new Color[3];
+    [SerializeField] private int extraJumps;
+    [SerializeField] private LayerMask raycastlayers;
+
+    private int colorIndex = 0;
 
     private Rigidbody2D myRigidbody2D;
     private SpriteRenderer mySpriteRenderer;
     private SpriteRenderer obstacleSpriteRenderer;   
     
+    public SpriteRenderer PlayerSpriteRenderer => mySpriteRenderer;
     public int Health => health;
     public int Score => score;
 
     private float xDirection;
 
     private bool canJump;
-    private int maxJumps = 1;
+    private int maxJumps = 1;    
 
-    [SerializeField] private int extraJumps;
-    [SerializeField] private LayerMask raycastlayers;
-
+    #region Events
     public event Action OnHealthChanged;
     public event Action OnScoreChanged;
+    #endregion
 
     void Awake()
     {
@@ -40,6 +42,11 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         extraJumps = maxJumps;
+
+        playerColors[0] = Color.red;
+        playerColors[1] = Color.blue;
+        playerColors[2] = Color.green;
+
     }
     void Update()
     {
@@ -59,6 +66,22 @@ public class PlayerControl : MonoBehaviour
 
         transform.localPosition = new Vector2(clampedX, transform.localPosition.y);
     }
+    #region Mecanica de cambio de color
+    public void ChangeColor()
+    {
+        mySpriteRenderer.color = playerColors[colorIndex];
+    }
+    public void RightColorChange()
+    {
+        colorIndex = (colorIndex + 1) % playerColors.Length;
+        ChangeColor();
+    }
+    public void LeftColorChange()
+    {
+        colorIndex = (colorIndex - 1 + playerColors.Length) % playerColors.Length;
+        ChangeColor();
+    }
+    #endregion
     private void FixedUpdate()
     {
         myRigidbody2D.linearVelocity = new Vector2(speed * xDirection, myRigidbody2D.linearVelocity.y);
@@ -107,9 +130,10 @@ public class PlayerControl : MonoBehaviour
     {
         gameControl.canChangeColor = true;
     }
+    #region NewInputSystem
     public void OnJumpInput (InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed && canJump)
+        if (callbackContext.performed && canJump && !gameControl.IsPaused)
         {
             myRigidbody2D.AddForce(Vector2.up * verticalForce, ForceMode2D.Impulse);
             extraJumps--;
@@ -117,7 +141,7 @@ public class PlayerControl : MonoBehaviour
     }
     public void OnMovementInput (InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed)
+        if (callbackContext.performed && !gameControl.IsPaused)
         {
             xDirection = callbackContext.ReadValue<float>();
         }
@@ -126,4 +150,19 @@ public class PlayerControl : MonoBehaviour
             xDirection = 0;
         }
     }
+    public void OnColorChangeRight(InputAction.CallbackContext context)
+    {
+        if (context.performed && !gameControl.IsPaused)
+        {
+            RightColorChange();
+        }
+    }
+    public void OnColorChangeLeft(InputAction.CallbackContext context)
+    {
+        if (context.performed && !gameControl.IsPaused)
+        {
+            LeftColorChange();
+        }
+    }
+    #endregion
 }
